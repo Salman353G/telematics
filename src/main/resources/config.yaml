@@ -1,0 +1,6 @@
+DB:
+  host: "127.0.0.1"
+  prot: "3306"
+  user: "admin"
+  password: "password"
+  database: "practiseschema"

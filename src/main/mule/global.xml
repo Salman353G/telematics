@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:db="http://www.mulesoft.org/schema/mule/db"
+	xmlns:apikit="http://www.mulesoft.org/schema/mule/mule-apikit"
+	xmlns:http="http://www.mulesoft.org/schema/mule/http"
+	xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+http://www.mulesoft.org/schema/mule/db http://www.mulesoft.org/schema/mule/db/current/mule-db.xsd 
+http://www.mulesoft.org/schema/mule/mule-apikit http://www.mulesoft.org/schema/mule/mule-apikit/current/mule-apikit.xsd 
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd">
+	  <http:listener-config name="vehicleinfo-httpListenerConfig">
+        <http:listener-connection host="0.0.0.0" port="8081" />
+    </http:listener-config>
+    <apikit:config name="vehicleinfo-config" api="resource::9df0e684-d5e9-49ba-9d29-6b0203f09330:vehicleinfo:1.0.0:raml:zip:vehicleinfo.raml" outboundHeadersMapName="outboundHeaders" httpStatusVarName="httpStatus" />
+    <db:config name="Database_Config" doc:name="Database Config" doc:id="d26ae502-c7f4-4a39-92e1-b4be3b0e9f90" >
+		<db:my-sql-connection host="${DB.host}" port="${DB.port}" user="${DB.user}" password="${DB.password}" database="${DB.database}" />
+	</db:config>
+	<configuration-properties doc:name="Configuration properties" doc:id="3e9f8aff-2635-499a-857f-11cf196162e5" file="config.yaml" />
+	
+	
+</mule>
